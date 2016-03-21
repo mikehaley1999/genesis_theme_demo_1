@@ -1,38 +1,26 @@
 <?php
 /**
- * This file adds the Home Page to the Centric Theme.
+ * This file adds the Home Page to the genesis_theme_demo_1 Theme.
  *
  * @author StudioPress
- * @package Centric
+ * @package genesis_theme_demo_1
  * @subpackage Customizations
  */
  
-add_action( 'wp_enqueue_scripts', 'centric_enqueue_home_scripts' );
-/**
- * Enqueue Scripts
- */
-function centric_enqueue_home_scripts() {
-
-	wp_enqueue_script( 'centric-home', get_bloginfo( 'stylesheet_directory' ) . '/js/home.js', array( 'jquery' ), '1.0.0', true );
-	wp_enqueue_script( 'localScroll', get_stylesheet_directory_uri() . '/js/jquery.localScroll.min.js', array( 'scrollTo' ), '1.2.8b', true );
-	wp_enqueue_script( 'scrollTo', get_stylesheet_directory_uri() . '/js/jquery.scrollTo.min.js', array( 'jquery' ), '1.4.5-beta', true );
- 	
-}
-
-add_action( 'genesis_meta', 'centric_home_genesis_meta' );
+add_action( 'genesis_meta', 'genesis_theme_demo_1_home_genesis_meta' );
 /**
  * Add widget support for homepage. If no widgets active, display the default loop.
  *
  */
-function centric_home_genesis_meta() {
+function genesis_theme_demo_1_home_genesis_meta() {
 
 	if ( is_active_sidebar( 'home-widgets-1' ) || is_active_sidebar( 'home-widgets-2' ) || is_active_sidebar( 'home-widgets-3' ) || is_active_sidebar( 'home-widgets-4' ) || is_active_sidebar( 'home-widgets-5' ) || is_active_sidebar( 'home-widgets-6' ) ) {
 
 		//* Force full width content layout
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-		//* Add centric-pro-home body class
-		add_filter( 'body_class', 'centric_body_class' );
+		//* Add genesis_theme_demo_1-pro-home body class
+		add_filter( 'body_class', 'genesis_theme_demo_1_body_class' );
 		
 		//* Remove breadcrumbs
 		remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
@@ -41,22 +29,22 @@ function centric_home_genesis_meta() {
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 		
 		//* Add home featured widget
-		add_action( 'genesis_after_header', 'centric_home_featured_widget', 1 );
+		add_action( 'genesis_after_header', 'genesis_theme_demo_1_home_featured_widget', 1 );
 		
 		//* Add home widgets
-		add_action( 'genesis_before_footer', 'centric_home_widgets', 5 );
+		add_action( 'genesis_before_footer', 'genesis_theme_demo_1_home_widgets', 5 );
 		
 	}
 }
 
-function centric_body_class( $classes ) {
+function genesis_theme_demo_1_body_class( $classes ) {
 
-	$classes[] = 'centric-pro-home';
+	$classes[] = 'genesis_theme_demo_1-pro-home';
 	return $classes;
 	
 }
 
-function centric_home_featured_widget() {
+function genesis_theme_demo_1_home_featured_widget() {
 
 	genesis_widget_area( 'home-widgets-1', array(
 		'before' => '<div class="home-featured"><div class="wrap"><div class="home-widgets-1 color-section widget-area">',
@@ -65,7 +53,7 @@ function centric_home_featured_widget() {
 	
 }
 
-function centric_home_widgets() {
+function genesis_theme_demo_1_home_widgets() {
 
 	echo '<div id="home-widgets" class="home-widgets">';
 	
