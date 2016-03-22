@@ -2,7 +2,7 @@
 /**
  * This file adds the Home Page to the genesis_theme_demo_1 Theme.
  *
- * @author StudioPress
+ * @author michael haley
  * @package genesis_theme_demo_1
  * @subpackage Customizations
  */
@@ -14,10 +14,10 @@ add_action( 'genesis_meta', 'genesis_theme_demo_1_home_genesis_meta' );
  */
 function genesis_theme_demo_1_home_genesis_meta() {
 
-	if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-bottom' ) {
+	if ( is_active_sidebar( 'home-top' ) || is_active_sidebar( 'home-bottom' )) {
 
 		//* Force sidebar-content-sidebar
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_sidebar_content_sidebar' );
+		add_filter( 'genesis_pre_get_option_site_layout','__genesis_return_sidebar_content_sidebar' );
 
 		//* Add genesis_theme_demo_1-pro-home body class
 		add_filter( 'body_class', 'genesis_theme_demo_1_body_class' );
@@ -49,7 +49,6 @@ function genesis_theme_demo_1_home_widgets() {
 	) );
 	
 	echo '</div>';
-
 }
 
 genesis();
